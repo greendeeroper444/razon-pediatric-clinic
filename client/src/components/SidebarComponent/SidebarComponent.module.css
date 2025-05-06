@@ -1,0 +1,120 @@
+
+
+.sidebar {
+    width: var(--sidebar-width);
+    background: white;
+    border-right: 1px solid var(--gray-light);
+    padding: 20px 0;
+    transition: var(--transition);
+    height: 100vh;
+    position: fixed;
+    z-index: 100;
+}
+
+.sidebarHeader {
+    padding: 0 20px 20px;
+    border-bottom: 1px solid var(--gray-light);
+    margin-bottom: 20px;
+}
+
+.sidebarHeader h2 {
+    color: var(--primary);
+    font-size: 1.5rem;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.logoText {
+    color: var(--primary);
+    font-size: 1.25rem;
+    font-weight: 600;
+}
+
+.iconWrapper {
+    background-color: var(--primary);
+    color: white;
+    width: 24px;
+    height: 24px;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 4px rgba(65, 105, 255, 0.2);
+    font-size: 12px;
+}
+
+.sidebarMenu {
+    padding: 0 10px;
+}
+
+.menuTitle {
+    color: var(--gray);
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    padding: 10px 15px;
+    margin-bottom: 5px;
+}
+
+.menuItem {
+    display: flex;
+    align-items: center;
+    padding: 12px 15px;
+    border-radius: var(--border-radius);
+    margin-bottom: 5px;
+    color: var(--dark-light);
+    text-decoration: none;
+    font-weight: 500;
+    transition: var(--transition);
+    font-size: 0.9rem;
+    gap: 12px
+}
+
+.menuItem i {
+    margin-right: 12px;
+    width: 20px;
+    text-align: center;
+    color: var(--gray);
+}
+
+.menuItem:hover {
+    background-color: var(--primary-light);
+    color: var(--primary);
+}
+
+.menuItem:hover i {
+    color: var(--primary);
+}
+
+.menuItem.active {
+    background-color: var(--primary-light);
+    color: var(--primary);
+    font-weight: 500;
+}
+
+.menuItem.active i {
+    color: var(--primary);
+}
+
+.main {
+    flex: 1;
+    margin-left: var(--sidebar-width);
+    transition: var(--transition);
+}
+
+
+/* @media (max-width: 768px) {
+    .sidebar {
+        display: none;
+    }
+
+    .sidebar.active {
+        left: 0;
+    }
+
+    .main {
+        margin-left: 0;
+    }
+} */

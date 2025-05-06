@@ -1,0 +1,87 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css');
+
+
+:root {
+  --primary: #3b82f6;
+  --primary-light: #dbeafe;
+  --secondary: #2563eb;
+  --dark: #1e293b;
+  --dark-light: #334155;
+  --light: #f8fafc;
+  --gray: #94a3b8;
+  --gray-light: #e2e8f0;
+  --success: #10b981;
+  --warning: #f59e0b;
+  --danger: #ef4444;
+  --medical: #6366f1;
+  --appointment: #8b5cf6;
+  --archive: #64748b;
+  --archive-light: #f1f5f9;
+  --sidebar-width: 280px;
+  --navbar-height: 70px;
+  --border-radius: 12px;
+  --card-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  --transition: all 0.3s ease;
+}
+
+* {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1rem;
+  margin: 0;
+}
+
+.app-container {
+  display: flex;
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+}
+
+.sidebar {
+  width: 280px;
+  height: 100%;
+  background-color: #f5f7fa;
+  border-right: 1px solid #e0e5eb;
+  overflow-y: auto;
+}
+
+.main-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.navbar {
+  height: 64px;
+  padding: 0 20px;
+  background-color: #ffffff;
+  border-bottom: 1px solid #e0e5eb;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.content-area {
+  flex: 1;
+  padding: 0;
+  overflow-y: auto;
+  background-color: #f9fafb;
+}
+
+
+
+@media (max-width: 768px) {
+  .sidebar {
+    display: none;
+  }
+
+  .sidebar.active {
+    left: 0;
+  }
+
+  .main {
+    margin-left: 0;
+  }
+}
