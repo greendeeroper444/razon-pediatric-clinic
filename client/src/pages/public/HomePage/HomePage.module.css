@@ -132,13 +132,6 @@ body {
     color: var(--gray);
 }
   
-.footer {
-    text-align: center;
-    padding: 40px 5%;
-    background: var(--dark);
-    color: white;
-    margin-top: 60px;
-}
   
 @media (max-width: 768px) {
     .hero h1 {

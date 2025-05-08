@@ -1,58 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
-@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css');
-
-:root {
-  --primary: #3b82f6;
-  --primary-light: #dbeafe;
-  --secondary: #2563eb;
-  --dark: #1e293b;
-  --dark-light: #334155;
-  --light: #f8fafc;
-  --gray: #94a3b8;
-  --gray-light: #e2e8f0;
-  --success: #10b981;
-  --warning: #f59e0b;
-  --danger: #ef4444;
-  --medical: #6366f1;
-  --appointment: #8b5cf6;
-  --sidebar-width: 280px;
-  --navbar-height: 70px;
-  --border-radius: 12px;
-  --transition: all 0.3s ease;
-}
-  
-.header {
-    background: white;
-    /* padding: 20px 5%; */
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    position: sticky;
-    top: 0;
-    z-index: 10;
-}
-  
-.logo {
-    font-size: 1.5rem;
-    font-weight: 700;
-    color: var(--primary);
-    text-decoration: none;
-}
-  
-.nav a {
-    margin-left: 30px;
-    text-decoration: none;
-    color: var(--dark);
-    font-weight: 500;
-    transition: var(--transition);
-}
-  
-.nav a:hover {
-    color: var(--primary);
-}
-
-/* Contact Page Specific Styles */
 .contactContent {
     display: flex;
     flex-direction: row;
@@ -68,7 +13,8 @@
     }
 }
 
-/* Contact Form Styles */
+
+
 .contactForm {
     flex: 1;
     background-color: white;
@@ -155,7 +101,8 @@
     transform: translateY(-2px);
 }
 
-/* Contact Info Styles */
+
+
 .contactInfo {
     margin-top: 40px;
 }
@@ -184,7 +131,8 @@
     color: var(--dark-light);
 }
 
-/* Map Section Styles */
+
+
 .mapSection {
     flex: 1;
     display: flex;
@@ -239,7 +187,8 @@
     border: none;
 }
 
-/* Social Media Links */
+
+
 .socialLinks {
     display: flex;
     gap: 15px;

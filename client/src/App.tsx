@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from 'react'
+import React, { createContext, useContext, useEffect, useState } from 'react'
 import './App.css'
-import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom'
 import {
   HomePage,
   DashboardPage,
@@ -12,201 +12,154 @@ import {
   SignupPage,
   AboutPage,
   ServicesPage,
-  ContactPage
-} from './pages';
-import NavigationComponent from './components/NavigationComponent/NavigationComponent';
-import SidebarComponent from './components/SidebarComponent/SidebarComponent';
-import NavbarComponent from './components/NavbarComponent/NavbarComponent';
-import styles from './pages/public/HomePage/HomePage.module.css';
-import ModalComponent from './components/ModalComponent/ModalComponent';
+  ContactPage,
+  UserAppointmentPage
+} from './pages'
+import NavigationComponent from './components/NavigationComponent/NavigationComponent'
+import SidebarComponent from './components/SidebarComponent/SidebarComponent'
+import NavbarComponent from './components/NavbarComponent/NavbarComponent'
+import styles from './pages/public/HomePage/HomePage.module.css'
+import ModalComponent from './components/ModalComponent/ModalComponent'
+
+//modal context to avoid prop drilling
+const ModalContext = createContext()
+
+export const useModal = () => useContext(ModalContext)
+
+
+const routes = [
+  //public routes
+  { path: '/', component: HomePage, layout: 'user' },
+  { path: '/login', component: LoginPage, layout: 'user' },
+  { path: '/signup', component: SignupPage, layout: 'user' },
+  { path: '/about', component: AboutPage, layout: 'user' },
+  { path: '/services', component: ServicesPage, layout: 'user' },
+  { path: '/contact', component: ContactPage, layout: 'user' },
+  { path: '/user/appointments', component: UserAppointmentPage, layout: 'user' },
+  
+  //admin routes
+  { path: '/dashboard', component: DashboardPage, layout: 'admin' },
+  { path: '/appointments', component: AppointmentPage, layout: 'admin' },
+  { path: '/patients', component: PatientsPage, layout: 'admin' },
+  { path: '/inventory', component: InventoryPage, layout: 'admin' },
+  { path: '/archives', component: ArchivePage, layout: 'admin' },
+]
 
 function App() {
+  const [isModalOpen, setIsModalOpen] = useState(false)
+  const [modalType, setModalType] = useState('')
+
+  //modal functions
+  const openModal = (type) => {
+    setModalType(type)
+    setIsModalOpen(true)
+  }
+
+  const closeModal = () => setIsModalOpen(false)
+
+  const handleSubmit = (formData) => {
+    console.log('Form submitted:', formData)
+    console.log('Form type:', modalType)
+    
+    //handle the data based on modal type
+    switch (modalType) {
+      case 'appointment':
+        console.log('New appointment created')
+        break
+      case 'patient':
+        console.log('New patient created')
+        break
+      case 'item':
+        console.log('New inventory item created')
+        break
+      default:
+        break
+    }
+    closeModal()
+  }
+
+  //modal context value
+  const modalValue = { openModal }
+
   return (
-    <Router>
-      <AppContent />
-    </Router>
+    <BrowserRouter>
+      <ModalContext.Provider value={modalValue}>
+        <PageTitle />
+        <Routes>
+          {
+            routes.map((route) => (
+              <Route 
+                key={route.path}
+                path={route.path} 
+                element={
+                  <Layout type={route.layout}>
+                    <route.component />
+                  </Layout>
+                } 
+              />
+            ))
+          }
+        </Routes>
+        <ModalComponent
+          isOpen={isModalOpen}
+          onClose={closeModal}
+          modalType={modalType}
+          onSubmit={handleSubmit}
+        />
+      </ModalContext.Provider>
+    </BrowserRouter>
+  )
+}
+
+//dynamic Layout component that handles both admin and user layouts
+function Layout({children, type}) {
+  const { openModal } = useModal()
+  
+  //clone children to pass openModal prop for backward compatibility
+  const childrenWithProps = React.Children.map(children, child => {
+    if (React.isValidElement(child)) {
+      return React.cloneElement(child, { openModal })
+    }
+    return child
+  })
+  
+  return (
+    <div className="app-container">
+      {
+        type === 'admin' && (
+          <div className="sidebar">
+            <SidebarComponent />
+          </div>
+        )
+      }
+      <div className="main-content">
+        {
+          type === 'admin' ? (
+            <NavbarComponent />
+          ) : (
+            <header className={styles.header}>
+              <NavigationComponent />
+            </header>
+          )
+        }
+        <div className="content-area">
+          {childrenWithProps}
+        </div>
+      </div>
+    </div>
   )
 }
 
 //component that sets page title based on current route
 function PageTitle() {
-  const location = useLocation();
+  const location = useLocation()
 
   useEffect(() => {
-    const path = location.pathname === '/' ? ' - home' : ` - ${location.pathname.substring(1)}`;
-    document.title = `Razon Pediatric Clinic${path}`;
-  }, [location.pathname]);
+    const path = location.pathname === '/' ? ' - home' : ` - ${location.pathname.substring(1)}`
+    document.title = `Razon Pediatric Clinic${path}`
+  }, [location.pathname])
 
-  return null; //this component doesn't render anything
-}
-
-//layout for user/public pages
-function UserLayout({children}) {
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const [modalType, setModalType] = useState('');
-
-  //function to open modal with specific type
-  const openModal = (type) => {
-    setModalType(type);
-    setIsModalOpen(true);
-  };
-
-  //function to close modal
-  const closeModal = () => {
-    setIsModalOpen(false);
-  };
-
-  //function to handle form submission
-  const handleSubmit = (formData) => {
-    console.log('Form submitted:', formData);
-    console.log('Form type:', modalType);
-    
-    //handle the data based on modal type
-    switch (modalType) {
-      case 'appointment':
-        //save new appointment
-        console.log('New appointment created');
-        break;
-      case 'patient':
-        //save new patient
-        console.log('New patient created');
-        break;
-      case 'item':
-        //save new inventory item
-        console.log('New inventory item created');
-        break;
-      default:
-        break;
-    }
-    
-  };
-
-  //clone the children and pass the openModal function as a prop
-  const childrenWithProps = React.Children.map(children, child => {
-    //check if the child is a valid React element before cloning
-    if (React.isValidElement(child)) {
-      return React.cloneElement(child, { openModal });
-    }
-    return child;
-  });
-
-  return (
-    <div className='app-container'>
-      <div className='main-content'>
-        <header className={styles.header}>
-          <NavigationComponent />
-        </header>
-        <div className='content-area'>
-          {childrenWithProps}
-        </div>
-      </div>
-      <ModalComponent
-        isOpen={isModalOpen}
-        onClose={closeModal}
-        modalType={modalType}
-        onSubmit={handleSubmit}
-      />
-    </div>
-  );
-}
-
-//layout for admin pages with modal context
-function AdminLayout({children}) {
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const [modalType, setModalType] = useState('');
-
-  //function to open modal with specific type
-  const openModal = (type) => {
-    setModalType(type);
-    setIsModalOpen(true);
-  };
-
-  //function to close modal
-  const closeModal = () => {
-    setIsModalOpen(false);
-  };
-
-  //function to handle form submission
-  const handleSubmit = (formData) => {
-    console.log('Form submitted:', formData);
-    console.log('Form type:', modalType);
-    
-    //handle the data based on modal type
-    switch (modalType) {
-      case 'appointment':
-        //save new appointment
-        console.log('New appointment created');
-        break;
-      case 'patient':
-        //save new patient
-        console.log('New patient created');
-        break;
-      case 'item':
-        //save new inventory item
-        console.log('New inventory item created');
-        break;
-      default:
-        break;
-    }
-    
-  };
-
-  //clone the children and pass the openModal function as a prop
-  const childrenWithProps = React.Children.map(children, child => {
-    //check if the child is a valid React element before cloning
-    if (React.isValidElement(child)) {
-      return React.cloneElement(child, { openModal });
-    }
-    return child;
-  });
-
-  return (
-    <div className='app-container'>
-      <div className='sidebar'>
-        <SidebarComponent />
-      </div>
-      <div className='main-content'>
-        <NavbarComponent />
-        <div className='content-area'>
-          {childrenWithProps}
-        </div>
-      </div>
-      
-    
-      <ModalComponent
-        isOpen={isModalOpen}
-        onClose={closeModal}
-        modalType={modalType}
-        onSubmit={handleSubmit}
-      />
-    </div>
-  );
-}
-
-//main content component with routes
-function AppContent() {
-  return (
-    <>
-      <PageTitle />
-      <Routes>
-        {/* public/user Pages */}
-        <Route path='/' element={<UserLayout><HomePage /></UserLayout>} />
-        <Route path='/login' element={<UserLayout><LoginPage /></UserLayout>} />
-        <Route path='/signup' element={<UserLayout><SignupPage /></UserLayout>} />
-        <Route path='/about' element={<UserLayout><AboutPage /></UserLayout>} />
-        <Route path='/services' element={<UserLayout><ServicesPage /></UserLayout>} />
-        <Route path='/contact' element={<UserLayout><ContactPage /></UserLayout>} />
-        <Route path='/user/appointments' element={<UserLayout><AppointmentPage /></UserLayout>} />
-        
-        {/* admin pages */}
-        <Route path='/dashboard' element={<AdminLayout><DashboardPage /></AdminLayout>} />
-        <Route path='/appointments' element={<AdminLayout><AppointmentPage /></AdminLayout>} />
-        <Route path='/patients' element={<AdminLayout><PatientsPage /></AdminLayout>} />
-        <Route path='/inventory' element={<AdminLayout><InventoryPage /></AdminLayout>} />
-        <Route path='/archives' element={<AdminLayout><ArchivePage /></AdminLayout>} />
-      </Routes>
-    </>
-  )
+  return null
 }
 
 export default App

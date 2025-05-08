@@ -2,6 +2,7 @@ import React from 'react'
 import styles from './HomePage.module.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCalendarCheck, faUserMd, faShieldAlt } from '@fortawesome/free-solid-svg-icons';
+import FooterComponent from '../../../components/FooterComponent/FooterComponent';
 
 function HomePage() {
   return (
@@ -35,7 +36,7 @@ function HomePage() {
             </div>
         </section>
 
-        <footer className={styles.footer}>&copy; 2025 MediCare Clinic. All rights reserved.</footer>
+        <FooterComponent />
     </div>
   )
 }

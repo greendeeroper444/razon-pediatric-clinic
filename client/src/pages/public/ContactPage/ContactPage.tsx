@@ -5,6 +5,7 @@ import NavigationComponent from '../../components/NavigationComponent/Navigation
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPhone, faEnvelope, faLocationDot, faClock } from '@fortawesome/free-solid-svg-icons'
 import { faFacebookF, faInstagram, faTwitter } from '@fortawesome/free-brands-svg-icons'
+import FooterComponent from '../../../components/FooterComponent/FooterComponent'
 
 function ContactPage() {
   return (
@@ -112,6 +113,7 @@ function ContactPage() {
                 </div>
             </div>
         </div>
+        <FooterComponent />
     </div>
   )
 }

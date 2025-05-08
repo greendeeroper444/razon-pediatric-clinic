@@ -1,59 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
-
-:root {
-  --primary: #3b82f6;
-  --primary-light: #dbeafe;
-  --secondary: #2563eb;
-  --dark: #1e293b;
-  --dark-light: #334155;
-  --light: #f8fafc;
-  --gray: #94a3b8;
-  --gray-light: #e2e8f0;
-  --success: #10b981;
-  --warning: #f59e0b;
-  --danger: #ef4444;
-  --medical: #6366f1;
-  --appointment: #8b5cf6;
-  --sidebar-width: 280px;
-  --navbar-height: 70px;
-  --border-radius: 12px;
-  --transition: all 0.3s ease;
-}
-
-.header {
-    background: white;
-    /* padding: 20px 5%; */
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    position: sticky;
-    top: 0;
-    z-index: 10;
-}
-.logo {
-    font-size: 1.5rem;
-    font-weight: 700;
-    color: var(--primary);
-    text-decoration: none;
-}
-
-.nav a {
-    margin-left: 30px;
-    text-decoration: none;
-    color: var(--dark);
-    font-weight: 500;
-    transition: var(--transition);
-}
-
-.nav a:hover {
-    color: var(--primary);
-}
-
-
-
 .aboutPageContainer {
-    font-family: 'Poppins', sans-serif;
     line-height: 1.6;
     color: var(--dark);
 }
@@ -334,71 +279,6 @@
 
 
 
-.footer {
-    background-color: var(--dark);
-    color: white;
-    padding: 4rem 0 2rem;
-}
-
-.footerGrid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 2rem;
-    margin-bottom: 3rem;
-}
-
-.footerCol h3 {
-    font-size: 1.2rem;
-    font-weight: 600;
-    margin-bottom: 1.5rem;
-    position: relative;
-    padding-bottom: 0.5rem;
-}
-
-.footerCol h3::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 40px;
-    height: 3px;
-    background-color: var(--primary);
-}
-
-.footerCol p {
-    color: var(--gray);
-    line-height: 1.8;
-}
-
-.socialIcons {
-    display: flex;
-    gap: 1rem;
-    margin-top: 1rem;
-}
-
-.socialIcons a {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 40px;
-    height: 40px;
-    background-color: rgba(255, 255, 255, 0.1);
-    color: white;
-    border-radius: 50%;
-    transition: var(--transition);
-}
-
-.socialIcons a:hover {
-    background-color: var(--primary);
-    transform: translateY(-3px);
-}
-
-.copyright {
-    text-align: center;
-    padding-top: 2rem;
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
-    color: var(--gray);
-}
 
 
 
@@ -421,9 +301,6 @@
         padding: 2rem;
     }
     
-    .footer {
-        padding: 3rem 0 1.5rem;
-    }
 }
 
 @media (max-width: 576px) {

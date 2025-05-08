@@ -15,6 +15,7 @@ import {
     faInstagram,
     faTwitter
 } from '@fortawesome/free-brands-svg-icons'
+import FooterComponent from '../../../components/FooterComponent/FooterComponent'
 
 function AboutPage() {
   return (
@@ -134,35 +135,7 @@ function AboutPage() {
             </section>
         </main>
 
-        <footer className={styles.footer}>
-            <div className={styles.container}>
-                <div className={styles.footerGrid}>
-                    <div className={styles.footerCol}>
-                        <h3>Razon Pediatric Clinic</h3>
-                        <p>123 Healing Way, Suite 200<br/>Wellness City, CA 90000</p>
-                    </div>
-                    <div className={styles.footerCol}>
-                        <h3>Hours</h3>
-                        <p>Monday - Friday: 8am - 5pm<br/>Saturday: 9am - 1pm<br/>Sunday: Closed</p>
-                    </div>
-                    <div className={styles.footerCol}>
-                        <h3>Contact</h3>
-                        <p>Phone: (555) 123-4567<br/>Email: info@razonpediatrics.com</p>
-                    </div>
-                    <div className={styles.footerCol}>
-                        <h3>Follow Us</h3>
-                        <div className={styles.socialIcons}>
-                            <a href="#" aria-label="Facebook"><FontAwesomeIcon icon={faFacebookF} /></a>
-                            <a href="#" aria-label="Instagram"><FontAwesomeIcon icon={faInstagram} /></a>
-                            <a href="#" aria-label="Twitter"><FontAwesomeIcon icon={faTwitter} /></a>
-                        </div>
-                    </div>
-                </div>
-                <div className={styles.copyright}>
-                    <p>&copy; {new Date().getFullYear()} Razon Pediatric Clinic. All rights reserved.</p>
-                </div>
-            </div>
-        </footer>
+        <FooterComponent />
     </div>
   )
 }

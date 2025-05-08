@@ -33,6 +33,7 @@ function NavigationComponent() {
                     <Link to='/about' className={`${styles.navLink} ${isActive('/about') ? styles.active : ''}`}>About</Link>
                     <Link to='/services' className={`${styles.navLink} ${isActive('/services') ? styles.active : ''}`}>Services</Link>
                     <Link to='/contact' className={`${styles.navLink} ${isActive('/contact') ? styles.active : ''}`}>Contact</Link>
+                    <Link to='/user/appointments' className={`${styles.navLink} ${isActive('/user/appointments') ? styles.active : ''}`}>Appointment</Link>
                 </div>
                 
                 <div className={styles.authLinks}>
@@ -52,37 +53,42 @@ function NavigationComponent() {
             <div className={`${styles.mobileMenu} ${isMenuOpen ? styles.active : ''}`}>
                 <div className={styles.mobileNavLinks}>
                     <Link to='/' 
-                          className={`${styles.navLink} ${isActive('/') ? styles.active : ''}`}
-                          onClick={toggleMenu}>
+                        className={`${styles.navLink} ${isActive('/') ? styles.active : ''}`}
+                        onClick={toggleMenu}>
                         Home
                     </Link>
                     <Link to='/about' 
-                          className={`${styles.navLink} ${isActive('/about') ? styles.active : ''}`}
-                          onClick={toggleMenu}>
+                        className={`${styles.navLink} ${isActive('/about') ? styles.active : ''}`}
+                        onClick={toggleMenu}>
                         About
                     </Link>
                     <Link to='/services' 
-                          className={`${styles.navLink} ${isActive('/services') ? styles.active : ''}`}
-                          onClick={toggleMenu}>
+                        className={`${styles.navLink} ${isActive('/services') ? styles.active : ''}`}
+                        onClick={toggleMenu}>
                         Services
                     </Link>
                     <Link to='/contact' 
-                          className={`${styles.navLink} ${isActive('/contact') ? styles.active : ''}`}
-                          onClick={toggleMenu}>
+                        className={`${styles.navLink} ${isActive('/contact') ? styles.active : ''}`}
+                        onClick={toggleMenu}>
                         Contact
+                    </Link>
+                    <Link to='/user/appointments' 
+                        className={`${styles.navLink} ${isActive('/user/appointments') ? styles.active : ''}`}
+                        onClick={toggleMenu}>
+                        Appointment
                     </Link>
                 </div>
                 
                 <div className={styles.mobileAuthLinks}>
                     <Link to='/login' 
-                          className={`${styles.loginLink} ${isActive('/login') ? styles.active : ''}`}
-                          onClick={toggleMenu}>
+                        className={`${styles.loginLink} ${isActive('/login') ? styles.active : ''}`}
+                        onClick={toggleMenu}>
                         <FontAwesomeIcon icon={faUser} className={styles.authIcon} />
                         Login
                     </Link>
                     <Link to='/signup' 
-                          className={`${styles.signupLink} ${isActive('/signup') ? styles.active : ''}`}
-                          onClick={toggleMenu}>
+                        className={`${styles.signupLink} ${isActive('/signup') ? styles.active : ''}`}
+                        onClick={toggleMenu}>
                         Sign Up
                     </Link>
                 </div>
