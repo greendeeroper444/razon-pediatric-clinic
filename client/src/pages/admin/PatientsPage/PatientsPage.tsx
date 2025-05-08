@@ -17,7 +17,7 @@ import {
     faCalendarPlus
 } from '@fortawesome/free-solid-svg-icons';
 
-function PatientsPage() {
+function PatientsPage({openModal}) {
     const [activeTab, setActiveTab] = useState('overview');
     const [showPatientDetail, setShowPatientDetail] = useState(false);
 
@@ -71,7 +71,11 @@ function PatientsPage() {
         <div className={styles.contentHeader}>
             <h1 className={styles.contentTitle}>Patients</h1>
             <div className={styles.contentActions}>
-                <button className={styles.btnPrimary} id="newPatientBtn">
+                <button 
+                    className={styles.btnPrimary} 
+                    id="newPatientBtn" 
+                    onClick={() => openModal && openModal('patient')}
+                >
                     <FontAwesomeIcon icon={faPlus} /> New Patient
                 </button>
             </div>

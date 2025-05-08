@@ -1,7 +1,6 @@
 import React from 'react'
 import styles from './SidebarComponent.module.css'
 import { Link, useLocation } from 'react-router-dom'
-import { CircleDot, Calendar, Image, Pill, LogOut } from 'lucide-react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { 
     faClinicMedical, 

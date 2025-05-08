@@ -48,7 +48,9 @@
     box-shadow: 0 0 0 3px rgba(67, 97, 238, 0.1);
 }
   
-.searchBar i {
+
+
+.searchBar svg {
     position: absolute;
     left: 15px;
     top: 50%;

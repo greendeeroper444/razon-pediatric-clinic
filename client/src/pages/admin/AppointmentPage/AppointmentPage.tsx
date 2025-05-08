@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPlus, faChevronRight } from '@fortawesome/free-solid-svg-icons';
 
 
-function AppointmentsComponent() {
+function AppointmentsPage({openModal}) {
     const appointments = [
         {
             id: 'PT-1001',
@@ -52,7 +52,11 @@ function AppointmentsComponent() {
         <div className={styles.contentHeader}>
             <h1 className={styles.contentTitle}>Appointments</h1>
             <div className={styles.contentActions}>
-                <button className='btn btn-primary' id='newAppointmentBtn'>
+                <button 
+                    className={styles.btnPrimary} 
+                    id='newAppointmentBtn' 
+                    onClick={() => openModal && openModal('appointment')}
+                >
                     <FontAwesomeIcon icon={faPlus} /> New Appointment
                 </button>
             </div>
@@ -117,4 +121,4 @@ function AppointmentsComponent() {
   )
 }
 
-export default AppointmentsComponent
+export default AppointmentsPage

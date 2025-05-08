@@ -53,7 +53,7 @@ function LoginPage() {
                 </div>
                 
                 <div className={styles.inputGroup}>
-                <div className={styles.inputWithIcon}>
+                    <div className={styles.inputWithIcon}>
                         <FontAwesomeIcon icon={faLock} className={styles.inputIcon} />
                         <input 
                             type={showPassword ? 'text' : 'password'} 

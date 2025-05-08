@@ -6,39 +6,63 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 30px;
+    margin-bottom: 24px;
 }
   
-  
 .contentTitle {
-    font-size: 1.5rem;
+    font-size: 24px;
+    font-weight: 600;
+    color: #333;
     margin: 0;
 }
   
 .contentActions {
     display: flex;
-    gap: 0.5rem;
+    gap: 10px;
 }
   
 .btnPrimary {
     background-color: var(--primary);
     color: white;
     border: none;
-    border-radius: var(--border-radius);
-    padding: 0.5rem 1rem;
-    font-size: 0.875rem;
+    padding: 8px 16px;
+    border-radius: 4px;
+    font-weight: 500;
     cursor: pointer;
     display: flex;
     align-items: center;
-    gap: 0.5rem;
-    transition: var(--transition);
+    gap: 8px;
 }
   
 .btnPrimary:hover {
-    background-color: #3a56d4;
+    background-color: var(--primary-dark, #4338ca);
 }
   
-  /* Card Styles */
+.btnOutline {
+    background-color: transparent;
+    color: var(--primary);
+    border: 1px solid var(--primary);
+    padding: 8px 16px;
+    border-radius: 4px;
+    font-weight: 500;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+  
+.btnOutline:hover {
+    background-color: rgba(79, 70, 229, 0.1);
+}
+  
+.sectionTitle {
+    margin: 25px 0 15px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #374151;
+}
+
+
 .inventoryCards {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));

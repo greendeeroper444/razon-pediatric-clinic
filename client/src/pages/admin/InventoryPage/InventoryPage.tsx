@@ -15,7 +15,7 @@ import {
     faEdit 
 } from '@fortawesome/free-solid-svg-icons';
 
-function InventoryPage() {
+function InventoryPage({openModal}) {
 
     const summaryCards = [
         {
@@ -152,7 +152,11 @@ function InventoryPage() {
         <div className={styles.contentHeader}>
             <h1 className={styles.contentTitle}>Inventory</h1>
             <div className={styles.contentActions}>
-                <button className={styles.btnPrimary} id="newMedicineBtn">
+                <button 
+                    className={styles.btnPrimary} 
+                    id="newMedicineBtn"
+                    onClick={() => openModal && openModal('item')}
+                >
                     <FontAwesomeIcon icon={faPlus} /> Add Item
                 </button>
             </div>

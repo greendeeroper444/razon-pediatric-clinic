@@ -1,3 +1,68 @@
+.content {
+    padding: 20px;
+}
+  
+.contentHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+}
+  
+.contentTitle {
+    font-size: 24px;
+    font-weight: 600;
+    color: #333;
+    margin: 0;
+}
+  
+.contentActions {
+    display: flex;
+    gap: 10px;
+}
+  
+.btnPrimary {
+    background-color: var(--primary);
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    font-weight: 500;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+  
+.btnPrimary:hover {
+    background-color: var(--primary-dark, #4338ca);
+}
+  
+.btnOutline {
+    background-color: transparent;
+    color: var(--primary);
+    border: 1px solid var(--primary);
+    padding: 8px 16px;
+    border-radius: 4px;
+    font-weight: 500;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+  
+.btnOutline:hover {
+    background-color: rgba(79, 70, 229, 0.1);
+}
+  
+.sectionTitle {
+    margin: 25px 0 15px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #374151;
+}
+
+
 .patientCards {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
@@ -86,17 +151,7 @@
     color: var(--danger);
 }
   
-  /* Tables */
-.appointmentsSection,
-.inventorySection {
-    background: white;
-    border-radius: var(--border-radius);
-    padding: 20px;
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
-      0 2px 4px -1px rgba(0, 0, 0, 0.06);
-    margin-bottom: 30px;
-}
-  
+
 .sectionHeader {
     display: flex;
     justify-content: space-between;
@@ -119,15 +174,11 @@
     gap: 5px;
 }
   
-.appointmentsTable,
-.inventoryTable,
 .patientTable {
     width: 100%;
     border-collapse: collapse;
 }
   
-.appointmentsTable th,
-.inventoryTable th,
 .patientTable th {
     text-align: left;
     padding: 12px 15px;
@@ -137,16 +188,12 @@
     border-bottom: 1px solid var(--gray-light);
 }
   
-.appointmentsTable td,
-.inventoryTable td,
 .patientTable td {
     padding: 15px;
     border-bottom: 1px solid var(--gray-light);
     vertical-align: middle;
 }
   
-.appointmentsTable tr:last-child td,
-.inventoryTable tr:last-child td,
 .patientTable tr:last-child td {
     border-bottom: none;
 }
@@ -276,7 +323,7 @@
 }
   
 .active {
-    background-color: #dcfce7;
+    /* background-color: #dcfce7; */
     color: var(--success);
 }
 .inactive {
@@ -341,7 +388,8 @@
     background-color: #a7f3d0;
 }
   
-  /* Table Containers */
+
+
 .inventoryTableContainer,
 .patientTableContainer {
     background: white;
@@ -375,7 +423,8 @@
     overflow-x: auto;
 }
   
-  /* Low Stock Alert */
+ 
+
 .lowStockAlert {
     background-color: #fef2f2;
     border-left: 4px solid var(--danger);
@@ -406,7 +455,8 @@
     color: var(--dark-light);
 }
   
-  /* Patient Detail View */
+
+
 .patientDetailContainer {
     background: white;
     border-radius: var(--border-radius);
@@ -521,69 +571,3 @@
     font-weight: 600;
 }
   
-  /* Additional classes for content structure */
-.content {
-    padding: 20px;
-    background-color: #f5f7fa;
-    min-height: 100vh;
-}
-  
-.contentHeader {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 24px;
-}
-  
-.contentTitle {
-    font-size: 24px;
-    font-weight: 600;
-    color: #333;
-    margin: 0;
-}
-  
-.contentActions {
-    display: flex;
-    gap: 10px;
-}
-  
-.btnPrimary {
-    background-color: var(--primary);
-    color: white;
-    border: none;
-    padding: 8px 16px;
-    border-radius: 4px;
-    font-weight: 500;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-}
-  
-.btnPrimary:hover {
-    background-color: var(--primary-dark, #4338ca);
-}
-  
-.btnOutline {
-    background-color: transparent;
-    color: var(--primary);
-    border: 1px solid var(--primary);
-    padding: 8px 16px;
-    border-radius: 4px;
-    font-weight: 500;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-}
-  
-.btnOutline:hover {
-    background-color: rgba(79, 70, 229, 0.1);
-}
-  
-.sectionTitle {
-    margin: 25px 0 15px;
-    font-size: 1.1rem;
-    font-weight: 600;
-    color: #374151;
-}
