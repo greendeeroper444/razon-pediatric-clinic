@@ -11,9 +11,8 @@ import {
     faEyeSlash 
 } from '@fortawesome/free-solid-svg-icons';
 import { Link, useNavigate } from 'react-router-dom';
-import NavigationComponent from '../../components/NavigationComponent/NavigationComponent';
 
-function LoginPage() {
+const LoginPage = () => {
     const navigate = useNavigate();
     const [showPassword, setShowPassword] = useState(false);
     const [emailOrContactNumber, setEmailOrContactNumber] = useState('');

@@ -3,7 +3,7 @@ import styles from './ArchivePage.module.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSearch, faFilter, faUser, faCalendarAlt, faArchive, faClock } from '@fortawesome/free-solid-svg-icons'
 
-function ArchivePage() {
+const ArchivePage = () => {
     const [searchQuery, setSearchQuery] = useState('')
 
     const archivedPatients = [

@@ -12,9 +12,8 @@ import {
     faUser
 } from '@fortawesome/free-solid-svg-icons';
 import { Link } from 'react-router-dom';
-import NavigationComponent from '../../components/NavigationComponent/NavigationComponent';
 
-function SignupPage() {
+const SignupPage = () => {
     const [showPassword, setShowPassword] = useState(false);
     const [name, setName] = useState('');
     const [emailOrContactNumber, setEmailOrContactNumber] = useState('');

@@ -4,7 +4,7 @@ import NotificationComponent from '../NotificationComponent/NotificationComponen
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSearch, faBell, faChevronDown } from '@fortawesome/free-solid-svg-icons'
 
-function NavbarComponent() {
+const NavbarComponent = () => {
     const [showNotifications, setShowNotifications] = useState(false);
 
     const toggleNotifications = () => {

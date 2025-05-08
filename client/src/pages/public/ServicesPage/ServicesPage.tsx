@@ -16,7 +16,7 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 import FooterComponent from '../../../components/FooterComponent/FooterComponent';
 
-function ServicesPage() {
+const ServicesPage = () => {
     const services = [
         {
             id: 1,

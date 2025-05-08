@@ -1,13 +1,11 @@
 import React from 'react'
 import styles from './ContactPage.module.css'
-import { Link } from 'react-router-dom'
-import NavigationComponent from '../../components/NavigationComponent/NavigationComponent'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPhone, faEnvelope, faLocationDot, faClock } from '@fortawesome/free-solid-svg-icons'
 import { faFacebookF, faInstagram, faTwitter } from '@fortawesome/free-brands-svg-icons'
 import FooterComponent from '../../../components/FooterComponent/FooterComponent'
 
-function ContactPage() {
+const ContactPage = () => {
   return (
     <div>
         <div className={styles.contactContent}>

@@ -3,7 +3,7 @@ import styles from './NotificationComponent.module.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCalendar, faPrescriptionBottleAlt, faFolder, faCheckDouble } from '@fortawesome/free-solid-svg-icons'
 
-function NotificationComponent({isVisible}) {
+const NotificationComponent = ({isVisible}) => {
    
     const notifications = [
         {

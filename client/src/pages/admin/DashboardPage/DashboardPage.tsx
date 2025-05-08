@@ -15,7 +15,7 @@ import {
     faCapsules
 } from '@fortawesome/free-solid-svg-icons';
 
-function DashboardPage() {
+const DashboardPage = () => {
     const dashboardCards = [
         {
             title: 'Today\'s Appointments',

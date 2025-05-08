@@ -2,9 +2,9 @@ import React from 'react'
 import styles from './AppointmentPage.module.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPlus, faChevronRight } from '@fortawesome/free-solid-svg-icons';
+import { OpenModalProps } from '../../../hooks/hook';
 
-
-function AppointmentsPage({openModal}) {
+const AppointmentPage: React.FC<OpenModalProps> = ({openModal}) => {
     const appointments = [
         {
             id: 'PT-1001',
@@ -121,4 +121,4 @@ function AppointmentsPage({openModal}) {
   )
 }
 
-export default AppointmentsPage
+export default AppointmentPage

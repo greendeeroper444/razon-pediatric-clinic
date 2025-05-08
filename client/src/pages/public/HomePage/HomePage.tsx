@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCalendarCheck, faUserMd, faShieldAlt } from '@fortawesome/free-solid-svg-icons';
 import FooterComponent from '../../../components/FooterComponent/FooterComponent';
 
-function HomePage() {
+const HomePage = () => {
   return (
     <div>
         <section className={styles.hero}>

@@ -7,7 +7,7 @@ import {
     faTwitter
 } from '@fortawesome/free-brands-svg-icons'
 
-function FooterComponent() {
+const FooterComponent = () => {
   return (
     <footer className={styles.footer}>
         <div className={styles.container}>

@@ -14,9 +14,9 @@ import {
     faPrescriptionBottleAlt, 
     faEdit 
 } from '@fortawesome/free-solid-svg-icons';
+import { OpenModalProps } from '../../../hooks/hook';
 
-function InventoryPage({openModal}) {
-
+const InventoryPage: React.FC<OpenModalProps> = ({openModal}) => {
     const summaryCards = [
         {
             title: "Total Medicines",

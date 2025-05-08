@@ -10,14 +10,9 @@ import {
     faShieldAlt, 
     faQuoteLeft
 } from '@fortawesome/free-solid-svg-icons'
-import {
-    faFacebookF,
-    faInstagram,
-    faTwitter
-} from '@fortawesome/free-brands-svg-icons'
 import FooterComponent from '../../../components/FooterComponent/FooterComponent'
 
-function AboutPage() {
+const AboutPage = () => {
   return (
     <div className={styles.aboutPageContainer}>
 

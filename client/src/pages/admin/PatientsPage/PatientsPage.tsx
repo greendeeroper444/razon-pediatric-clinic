@@ -16,8 +16,9 @@ import {
     faEdit,
     faCalendarPlus
 } from '@fortawesome/free-solid-svg-icons';
+import { OpenModalProps } from '../../../hooks/hook';
 
-function PatientsPage({openModal}) {
+const PatientsPage: React.FC<OpenModalProps> = ({openModal}) => {
     const [activeTab, setActiveTab] = useState('overview');
     const [showPatientDetail, setShowPatientDetail] = useState(false);
 

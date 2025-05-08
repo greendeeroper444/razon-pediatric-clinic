@@ -12,7 +12,7 @@ import {
     faArchive
 } from '@fortawesome/free-solid-svg-icons';
 
-function SidebarComponent() {
+const SidebarComponent = () => {
     const location = useLocation();
     const isActive = (path) => location.pathname === path;
 

@@ -6,7 +6,7 @@ import { faBars, faTimes, faUser } from '@fortawesome/free-solid-svg-icons';
 import rpcLogo from '../../assets/icons/rpc-logo.png';
 
 
-function NavigationComponent() {
+const NavigationComponent = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const location = useLocation();
 

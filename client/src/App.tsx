@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import './App.css'
 import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom'
 import {
@@ -20,14 +20,27 @@ import SidebarComponent from './components/SidebarComponent/SidebarComponent'
 import NavbarComponent from './components/NavbarComponent/NavbarComponent'
 import styles from './pages/public/HomePage/HomePage.module.css'
 import ModalComponent from './components/ModalComponent/ModalComponent'
+import { ModalContext, useModal, OpenModalProps } from './hooks/hook'
 
-//modal context to avoid prop drilling
-const ModalContext = createContext()
+//define form data type
+interface FormData {
+  [key: string]: unknown;
+}
 
-export const useModal = () => useContext(ModalContext)
+//define the route type
+interface RouteType {
+  path: string;
+  component: React.ComponentType<OpenModalProps>;
+  layout: 'user' | 'admin';
+}
 
+//define layout props
+interface LayoutProps {
+  children: React.ReactNode;
+  type: 'user' | 'admin';
+}
 
-const routes = [
+const routes: RouteType[] = [
   //public routes
   { path: '/', component: HomePage, layout: 'user' },
   { path: '/login', component: LoginPage, layout: 'user' },
@@ -46,44 +59,41 @@ const routes = [
 ]
 
 function App() {
-  const [isModalOpen, setIsModalOpen] = useState(false)
-  const [modalType, setModalType] = useState('')
+  const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
+  const [modalType, setModalType] = useState<string>('');
 
   //modal functions
-  const openModal = (type) => {
-    setModalType(type)
-    setIsModalOpen(true)
+  const openModal = (type: string): void => {
+    setModalType(type);
+    setIsModalOpen(true);
   }
 
-  const closeModal = () => setIsModalOpen(false)
+  const closeModal = (): void => setIsModalOpen(false);
 
-  const handleSubmit = (formData) => {
-    console.log('Form submitted:', formData)
-    console.log('Form type:', modalType)
+  const handleSubmit = (formData: FormData): void => {
+    console.log('Form submitted:', formData);
+    console.log('Form type:', modalType);
     
     //handle the data based on modal type
     switch (modalType) {
       case 'appointment':
-        console.log('New appointment created')
-        break
+        console.log('New appointment created');
+        break;
       case 'patient':
-        console.log('New patient created')
-        break
+        console.log('New patient created');
+        break;
       case 'item':
-        console.log('New inventory item created')
-        break
+        console.log('New inventory item created');
+        break;
       default:
-        break
+        break;
     }
-    closeModal()
+    closeModal();
   }
-
-  //modal context value
-  const modalValue = { openModal }
 
   return (
     <BrowserRouter>
-      <ModalContext.Provider value={modalValue}>
+      <ModalContext.Provider value={{ openModal }}>
         <PageTitle />
         <Routes>
           {
@@ -93,7 +103,7 @@ function App() {
                 path={route.path} 
                 element={
                   <Layout type={route.layout}>
-                    <route.component />
+                    <route.component openModal={openModal} />
                   </Layout>
                 } 
               />
@@ -112,27 +122,28 @@ function App() {
 }
 
 //dynamic Layout component that handles both admin and user layouts
-function Layout({children, type}) {
-  const { openModal } = useModal()
+function Layout({children, type}: LayoutProps) {
+  const {openModal} = useModal();
   
   //clone children to pass openModal prop for backward compatibility
   const childrenWithProps = React.Children.map(children, child => {
     if (React.isValidElement(child)) {
-      return React.cloneElement(child, { openModal })
+      //using type assertion to fix the cloneElement typing error
+      return React.cloneElement(child, {openModal} as OpenModalProps);
     }
-    return child
-  })
+    return child;
+  });
   
   return (
-    <div className="app-container">
+    <div className='app-container'>
       {
         type === 'admin' && (
-          <div className="sidebar">
+          <div className='sidebar'>
             <SidebarComponent />
           </div>
         )
       }
-      <div className="main-content">
+      <div className='main-content'>
         {
           type === 'admin' ? (
             <NavbarComponent />
@@ -142,8 +153,8 @@ function Layout({children, type}) {
             </header>
           )
         }
-        <div className="content-area">
-          {childrenWithProps}
+        <div className='content-area'>
+          {childrenWithProps} 
         </div>
       </div>
     </div>
@@ -152,14 +163,14 @@ function Layout({children, type}) {
 
 //component that sets page title based on current route
 function PageTitle() {
-  const location = useLocation()
+  const location = useLocation();
 
   useEffect(() => {
-    const path = location.pathname === '/' ? ' - home' : ` - ${location.pathname.substring(1)}`
-    document.title = `Razon Pediatric Clinic${path}`
-  }, [location.pathname])
+    const path = location.pathname === '/' ? ' - home' : ` - ${location.pathname.substring(1)}`;
+    document.title = `Razon Pediatric Clinic${path}`;
+  }, [location.pathname]);
 
-  return null
+  return null;
 }
 
-export default App
+export default App;
