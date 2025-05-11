@@ -451,6 +451,6 @@
 
 @media (max-width: 768px) {
     .content {
-        padding: 0px;
+        padding: 10px;
     }
 }

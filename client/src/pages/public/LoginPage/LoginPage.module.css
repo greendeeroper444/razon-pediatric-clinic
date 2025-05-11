@@ -402,7 +402,7 @@ body {
 
 @media (max-width: 768px) {
     .hero {
-        padding: 0px !important;
+        padding: 10px !important;
     }
     .loginContainer {
         padding: 1rem;

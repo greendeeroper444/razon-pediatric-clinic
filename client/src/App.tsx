@@ -208,23 +208,32 @@ function Layout({children, type, sidebarCollapsed, toggleSidebar}: LayoutProps) 
           </div>
         )
       }
-      <div className='main-content'>
+     
         {
           type === 'admin' ? (
-            <NavbarComponent 
-              sidebarCollapsed={sidebarCollapsed}
-              toggleSidebar={toggleSidebar}
-            />
+           <div className='main-content-admin'>
+              <NavbarComponent 
+                sidebarCollapsed={sidebarCollapsed}
+                toggleSidebar={toggleSidebar}
+              />
+               <div className='content-area'>
+                {childrenWithProps} 
+              </div>
+           </div>
           ) : (
-            <header className={styles.header}>
-              <NavigationComponent />
-            </header>
+            <div className='main-content-public'>
+              <header className={styles.header}>
+                <NavigationComponent />
+              </header>
+
+               <div className='content-area'>
+                {childrenWithProps} 
+              </div>
+            </div>
+            
           )
         }
-        <div className='content-area'>
-          {childrenWithProps} 
-        </div>
-      </div>
+       
     </div>
   )
 }

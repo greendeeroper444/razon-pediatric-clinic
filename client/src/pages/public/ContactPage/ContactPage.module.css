@@ -7,12 +7,6 @@
     min-height: calc(100vh - var(--navbar-height));
 }
 
-@media (max-width: 992px) {
-    .contactContent {
-        flex-direction: column;
-    }
-}
-
 
 
 .contactForm {
@@ -211,4 +205,16 @@
     background-color: var(--primary);
     color: white;
     transform: translateY(-3px);
+}
+
+@media (max-width: 768px) {
+    .contactForm {
+       padding: 1rem;
+    }
+}
+
+@media (max-width: 992px) {
+    .contactContent {
+        flex-direction: column;
+    }
 }
