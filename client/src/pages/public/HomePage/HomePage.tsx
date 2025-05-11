@@ -2,14 +2,17 @@ import styles from './HomePage.module.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCalendarCheck, faUserMd, faShieldAlt } from '@fortawesome/free-solid-svg-icons';
 import FooterComponent from '../../../components/FooterComponent/FooterComponent';
+import { useNavigate } from 'react-router-dom';
 
 const HomePage = () => {
+    const navigate = useNavigate();
+
   return (
     <div>
         <section className={styles.hero}>
             <h1>Book Your Appointment Online</h1>
             <p>Accessible. Reliable. Fast healthcare booking at your fingertips.</p>
-            <button className={styles.btnPrimary}>Book Now</button>
+            <button className={styles.btnPrimary} onClick={() => navigate('/login')}>Book Now</button>
         </section>
 
         <section className={styles.features}>

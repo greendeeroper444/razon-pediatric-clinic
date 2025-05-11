@@ -571,3 +571,16 @@
     font-weight: 600;
 }
   
+
+
+
+
+@media (max-width: 768px) {
+    .content {
+        padding: 0px;
+    }
+    .contentHeader {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}

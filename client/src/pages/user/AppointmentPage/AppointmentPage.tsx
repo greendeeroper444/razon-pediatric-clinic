@@ -4,7 +4,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPlus, faChevronRight } from '@fortawesome/free-solid-svg-icons';
 import { OpenModalProps } from '../../../hooks/hook';
 
-
 const AppointmentPage: React.FC<OpenModalProps> = ({openModal}) => {
     const appointments = [
         {
@@ -75,48 +74,51 @@ const AppointmentPage: React.FC<OpenModalProps> = ({openModal}) => {
                 </div>
             </div>
 
-            <table className={styles.appointmentsTable}>
-                <thead>
-                    <tr>
-                        <th>Patient</th>
-                        <th>Time</th>
-                        <th>Doctor</th>
-                        <th>Type</th>
-                        <th>Actions</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {
-                        appointments.map((appointment) => (
-                            <tr key={appointment.id}>
-                                <td>
-                                    <div className={styles.patientInfo}>
-                                        <div className={styles.patientAvatar}>{appointment.patientInitials}</div>
-                                        <div>
-                                            <div className={styles.patientName}>{appointment.patientName}</div>
-                                            <div className={styles.patientId}>#{appointment.id}</div>
+           
+            <div className={styles.tableResponsive}>
+                <table className={styles.appointmentsTable}>
+                    <thead>
+                        <tr>
+                            <th>Patient</th>
+                            <th>Time</th>
+                            <th>Doctor</th>
+                            <th>Type</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {
+                            appointments.map((appointment) => (
+                                <tr key={appointment.id}>
+                                    <td>
+                                        <div className={styles.patientInfo}>
+                                            <div className={styles.patientAvatar}>{appointment.patientInitials}</div>
+                                            <div>
+                                                <div className={styles.patientName}>{appointment.patientName}</div>
+                                                <div className={styles.patientId}>#{appointment.id}</div>
+                                            </div>
                                         </div>
-                                    </div>
-                                </td>
-                                <td>
-                                    <div className={styles.appointmentTime}>{appointment.time}</div>
-                                    <div className={styles.appointmentDate}>{appointment.date}</div>
-                                </td>
-                                <td>{appointment.doctor}</td>
-                                <td>
-                                    <span className={`${styles.appointmentType} ${appointment.typeClass ? styles[appointment.typeClass] : ''}`}>
-                                        {appointment.type}
-                                    </span>
-                                </td>
-                                <td>
-                                    <button className={`${styles.actionBtn} ${styles.view}`}>View</button>
-                                    <button className={`${styles.actionBtn} ${styles.cancel}`}>Cancel</button>
-                                </td>
-                            </tr>
-                        ))
-                    }
-                </tbody>
-            </table>
+                                    </td>
+                                    <td>
+                                        <div className={styles.appointmentTime}>{appointment.time}</div>
+                                        <div className={styles.appointmentDate}>{appointment.date}</div>
+                                    </td>
+                                    <td>{appointment.doctor}</td>
+                                    <td>
+                                        <span className={`${styles.appointmentType} ${appointment.typeClass ? styles[appointment.typeClass] : ''}`}>
+                                            {appointment.type}
+                                        </span>
+                                    </td>
+                                    <td>
+                                        <button className={`${styles.actionBtn} ${styles.view}`}>View</button>
+                                        <button className={`${styles.actionBtn} ${styles.cancel}`}>Cancel</button>
+                                    </td>
+                                </tr>
+                            ))
+                        }
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
   )

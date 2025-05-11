@@ -64,10 +64,12 @@ interface RouteType {
   layout: 'user' | 'admin';
 }
 
-//define layout props
+//define layout props - UPDATED to include the missing props
 interface LayoutProps {
   children: React.ReactNode;
   type: 'user' | 'admin';
+  sidebarCollapsed: boolean;
+  toggleSidebar: () => void;
 }
 
 const routes: RouteType[] = [
@@ -90,11 +92,28 @@ const routes: RouteType[] = [
 
 function App() {
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
-  //fix: Change the state type from string to ModalType
   const [modalType, setModalType] = useState<ModalType>('appointment');
+  const [sidebarCollapsed, setSidebarCollapsed] = useState<boolean>(false);
+  
+  //check for mobile view on initial load and window resize
+  useEffect(() => {
+    const checkMobile = () => {
+      if (window.innerWidth <= 768) {
+        setSidebarCollapsed(true);
+      }
+    };
+    
+    //initial check
+    checkMobile();
+    
+    //listen for resize events
+    window.addEventListener('resize', checkMobile);
+    
+    //cleanup
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
 
   //modal functions
-  //fix: Change the input type from string to ModalType
   const openModal = (type: ModalType): void => {
     setModalType(type);
     setIsModalOpen(true);
@@ -102,7 +121,6 @@ function App() {
 
   const closeModal = (): void => setIsModalOpen(false);
 
-  //fix: Change the input type from FormData to FormDataType
   const handleSubmit = (formData: FormDataType): void => {
     console.log('Form submitted:', formData);
     console.log('Form type:', modalType);
@@ -123,39 +141,50 @@ function App() {
     }
     closeModal();
   }
+  
+  //handle sidebar toggle
+  const toggleSidebar = (): void => {
+    setSidebarCollapsed(!sidebarCollapsed);
+  }
 
   return (
     <BrowserRouter>
       <ModalContext.Provider value={{ openModal }}>
-        <PageTitle />
-        <Routes>
-          {
-            routes.map((route) => (
-              <Route 
-                key={route.path}
-                path={route.path} 
-                element={
-                  <Layout type={route.layout}>
-                    <route.component openModal={openModal} />
-                  </Layout>
-                } 
-              />
-            ))
-          }
-        </Routes>
-        <ModalComponent
-          isOpen={isModalOpen}
-          onClose={closeModal}
-          modalType={modalType}
-          onSubmit={handleSubmit}
-        />
+        <div className={`app-container ${sidebarCollapsed ? 'sidebar-collapsed' : ''}`}>
+          <PageTitle />
+          <Routes>
+            {
+              routes.map((route) => (
+                <Route 
+                  key={route.path}
+                  path={route.path} 
+                  element={
+                    <Layout 
+                      type={route.layout}
+                      sidebarCollapsed={sidebarCollapsed}
+                      toggleSidebar={toggleSidebar}
+                    >
+                      <route.component openModal={openModal} />
+                    </Layout>
+                  } 
+                />
+              ))
+            }
+          </Routes>
+          <ModalComponent
+            isOpen={isModalOpen}
+            onClose={closeModal}
+            modalType={modalType}
+            onSubmit={handleSubmit}
+          />
+        </div>
       </ModalContext.Provider>
     </BrowserRouter>
   )
 }
 
 //dynamic Layout component that handles both admin and user layouts
-function Layout({children, type}: LayoutProps) {
+function Layout({children, type, sidebarCollapsed, toggleSidebar}: LayoutProps) {
   const {openModal} = useModal();
   
   //clone children to pass openModal prop for backward compatibility
@@ -168,18 +197,24 @@ function Layout({children, type}: LayoutProps) {
   });
   
   return (
-    <div className='app-container'>
+    <div className={`app-container ${sidebarCollapsed ? 'sidebar-collapsed' : ''}`}>
       {
         type === 'admin' && (
           <div className='sidebar'>
-            <SidebarComponent />
+            <SidebarComponent 
+              sidebarCollapsed={sidebarCollapsed}
+              toggleSidebar={toggleSidebar}
+            />
           </div>
         )
       }
       <div className='main-content'>
         {
           type === 'admin' ? (
-            <NavbarComponent />
+            <NavbarComponent 
+              sidebarCollapsed={sidebarCollapsed}
+              toggleSidebar={toggleSidebar}
+            />
           ) : (
             <header className={styles.header}>
               <NavigationComponent />

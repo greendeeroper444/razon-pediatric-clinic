@@ -1,5 +1,3 @@
-
-
 .sidebar {
     width: var(--sidebar-width);
     background: white;
@@ -9,12 +7,27 @@
     height: 100vh;
     position: fixed;
     z-index: 100;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+
+.sidebar.collapsed {
+    width: 70px;
+}
+
+.sidebar.hidden {
+    transform: translateX(-100%);
 }
 
 .sidebarHeader {
     padding: 0 20px 17px;
     border-bottom: 1px solid var(--gray-light);
     margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
 }
 
 .sidebarHeader h2 {
@@ -30,19 +43,36 @@
     color: var(--primary);
     font-size: 1.25rem;
     font-weight: 600;
+    transition: opacity 0.3s;
 }
 
-.iconWrapper {
-    background-color: var(--primary);
-    color: white;
-    width: 24px;
-    height: 24px;
-    border-radius: 6px;
+.collapsed .logoText {
+    opacity: 0;
+    width: 0;
+    overflow: hidden;
+}
+
+.toggleButton {
+    background: transparent;
+    border: none;
+    color: var(--gray);
+    cursor: pointer;
+    width: 28px;
+    height: 28px;
     display: flex;
     align-items: center;
     justify-content: center;
-    box-shadow: 0 2px 4px rgba(65, 105, 255, 0.2);
-    font-size: 12px;
+    border-radius: 50%;
+    transition: var(--transition);
+}
+
+.toggleButton:hover {
+    background-color: var(--gray-light);
+    color: var(--primary);
+}
+
+.collapsed .toggleButton {
+    transform: rotate(180deg);
 }
 
 .sidebarMenu {
@@ -56,6 +86,16 @@
     letter-spacing: 0.5px;
     padding: 10px 15px;
     margin-bottom: 5px;
+    transition: opacity 0.3s;
+    white-space: nowrap;
+}
+
+.collapsed .menuTitle {
+    opacity: 0;
+    height: 0;
+    padding: 0;
+    margin: 0;
+    overflow: hidden;
 }
 
 .menuItem {
@@ -69,14 +109,29 @@
     font-weight: 500;
     transition: var(--transition);
     font-size: 0.9rem;
-    gap: 12px
+    gap: 12px;
 }
 
-.menuItem i {
-    margin-right: 12px;
-    width: 20px;
-    text-align: center;
-    color: var(--gray);
+.menuItem svg {
+    min-width: 20px;
+    transition: var(--transition);
+}
+
+.menuText {
+    white-space: nowrap;
+    opacity: 1;
+    transition: opacity 0.3s, width 0.2s;
+    overflow: hidden;
+}
+
+.collapsed .menuText {
+    opacity: 0;
+    width: 0;
+}
+
+.collapsed .menuItem {
+    padding: 12px;
+    justify-content: center;
 }
 
 .menuItem:hover {
@@ -84,8 +139,8 @@
     color: var(--primary);
 }
 
-.menuItem:hover i {
-    color: var(--primary);
+.menuItem:hover svg {
+    color: var(--primary) !important;
 }
 
 .menuItem.active {
@@ -94,27 +149,45 @@
     font-weight: 500;
 }
 
-.menuItem.active i {
-    color: var(--primary);
+.menuItem.active svg {
+    color: var(--primary) !important;
 }
 
-.main {
-    flex: 1;
-    margin-left: var(--sidebar-width);
+
+/* mobiel toggle collape */
+.mobileToggle {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    z-index: 99;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: var(--primary);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
     transition: var(--transition);
 }
 
+.mobileToggle:hover {
+    background-color: var(--secondary);
+}
 
-/* @media (max-width: 768px) {
+
+
+@media (max-width: 1024px) {
     .sidebar {
-        display: none;
+        width: 240px;
     }
+}
 
-    .sidebar.active {
-        left: 0;
+@media (max-width: 768px) {
+    .sidebar {
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
     }
-
-    .main {
-        margin-left: 0;
-    }
-} */
+}

@@ -1,3 +1,21 @@
+.content {
+  padding: 20px;
+}
+
+.contentHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+.contentTitle {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--dark);
+}
+
+
 .dashboardCards,
 .inventoryCards,
 .patientCards {
@@ -132,6 +150,7 @@
 .patientTable {
   width: 100%;
   border-collapse: collapse;
+  overflow: auto;
 }
 
 .appointmentsTable th,
@@ -426,19 +445,12 @@
   color: var(--dark-light);
 }
 
-.content {
-  padding: 20px;
-}
 
-.contentHeader {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 30px;
-}
 
-.contentTitle {
-  font-size: 1.5rem;
-  font-weight: 600;
-  color: var(--dark);
+
+
+@media (max-width: 768px) {
+    .content {
+        padding: 0px;
+    }
 }

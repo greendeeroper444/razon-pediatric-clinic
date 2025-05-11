@@ -122,16 +122,16 @@ const DashboardPage = () => {
         <div className={styles.dashboardCards}>
             {
                 dashboardCards.map((card, index) => (
-                <div className={styles.card} key={index}>
-                    <div className={styles.cardHeader}>
-                    <div className={styles.cardTitle}>{card.title}</div>
-                    <div className={`${styles.cardIcon} ${styles[card.iconColor]}`}>
-                        <FontAwesomeIcon icon={card.icon} />
+                    <div className={styles.card} key={index}>
+                        <div className={styles.cardHeader}>
+                        <div className={styles.cardTitle}>{card.title}</div>
+                        <div className={`${styles.cardIcon} ${styles[card.iconColor]}`}>
+                            <FontAwesomeIcon icon={card.icon} />
+                        </div>
+                        </div>
+                        <div className={styles.cardValue}>{card.value}</div>
+                        <div className={styles.cardFooter}>{card.footer}</div>
                     </div>
-                    </div>
-                    <div className={styles.cardValue}>{card.value}</div>
-                    <div className={styles.cardFooter}>{card.footer}</div>
-                </div>
                 ))
             }
         </div>
@@ -139,57 +139,59 @@ const DashboardPage = () => {
         {/* upcoming appointments */}
         <div className={styles.appointmentsSection}>
             <div className={styles.sectionHeader}>
-            <h3 className={styles.sectionTitle}>Upcoming Appointments</h3>
-            <div className={styles.sectionActions}>
-                <a href="/razon-pediatric/appointment.html">
-                <span>View All</span>
-                <FontAwesomeIcon icon={faChevronRight} />
-                </a>
+                <h3 className={styles.sectionTitle}>Upcoming Appointments</h3>
+                <div className={styles.sectionActions}>
+                    <a href="/razon-pediatric/appointment.html">
+                    <span>View All</span>
+                    <FontAwesomeIcon icon={faChevronRight} />
+                    </a>
+                </div>
             </div>
-        </div>
 
-        <table className={styles.appointmentsTable}>
-            <thead>
-                <tr>
-                    <th>Patient</th>
-                    <th>Time</th>
-                    <th>Doctor</th>
-                    <th>Type</th>
-                    <th>Actions</th>
-                </tr>
-            </thead>
-            <tbody>
-                {
-                    appointments.map((appointment, index) => (
-                        <tr key={index}>
-                            <td>
-                                <div className={styles.patientInfo}>
-                                    <div className={styles.patientAvatar}>{appointment.patient.initials}</div>
-                                    <div>
-                                    <div className={styles.patientName}>{appointment.patient.name}</div>
-                                    <div className={styles.patientId}>{appointment.patient.id}</div>
-                                    </div>
-                                </div>
-                            </td>
-                            <td>
-                                <div className={styles.appointmentTime}>{appointment.time}</div>
-                                <div className={styles.appointmentDate}>{appointment.date}</div>
-                            </td>
-                            <td>{appointment.doctor}</td>
-                            <td>
-                                <span className={`${styles.appointmentType} ${appointment.type === 'Emergency' ? styles.emergency : ''}`}>
-                                    {appointment.type}
-                                </span>
-                            </td>
-                            <td>
-                                <button className={`${styles.actionBtn} ${styles.view}`}>View</button>
-                                <button className={`${styles.actionBtn} ${styles.cancel}`}>Cancel</button>
-                            </td>
+            <div className={styles.tableResponsive}>
+                <table className={styles.appointmentsTable}>
+                    <thead>
+                        <tr>
+                            <th>Patient</th>
+                            <th>Time</th>
+                            <th>Doctor</th>
+                            <th>Type</th>
+                            <th>Actions</th>
                         </tr>
-                    ))
-                }
-            </tbody>
-            </table>
+                    </thead>
+                    <tbody>
+                        {
+                            appointments.map((appointment, index) => (
+                                <tr key={index}>
+                                    <td>
+                                        <div className={styles.patientInfo}>
+                                            <div className={styles.patientAvatar}>{appointment.patient.initials}</div>
+                                            <div>
+                                            <div className={styles.patientName}>{appointment.patient.name}</div>
+                                            <div className={styles.patientId}>{appointment.patient.id}</div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div className={styles.appointmentTime}>{appointment.time}</div>
+                                        <div className={styles.appointmentDate}>{appointment.date}</div>
+                                    </td>
+                                    <td>{appointment.doctor}</td>
+                                    <td>
+                                        <span className={`${styles.appointmentType} ${appointment.type === 'Emergency' ? styles.emergency : ''}`}>
+                                            {appointment.type}
+                                        </span>
+                                    </td>
+                                    <td>
+                                        <button className={`${styles.actionBtn} ${styles.view}`}>View</button>
+                                        <button className={`${styles.actionBtn} ${styles.cancel}`}>Cancel</button>
+                                    </td>
+                                </tr>
+                            ))
+                        }
+                    </tbody>
+                </table>
+            </div>
         </div>
 
         {/* inventory section */}
@@ -204,44 +206,46 @@ const DashboardPage = () => {
             </div>
             </div>
 
-            <table className={styles.inventoryTable}>
-                <thead>
-                    <tr>
-                    <th>Medicine</th>
-                    <th>Category</th>
-                    <th>Stock</th>
-                    <th>Last Ordered</th>
-                    <th>Actions</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {
-                        inventory.map((item, index) => (
-                            <tr key={index}>
-                                <td>
-                                    <div className={styles.medicineInfo}>
-                                        <div className={styles.medicineIcon}>
-                                            <FontAwesomeIcon icon={item.icon} />
+            <div className={styles.tableResponsive}>
+                <table className={styles.inventoryTable}>
+                    <thead>
+                        <tr>
+                        <th>Medicine</th>
+                        <th>Category</th>
+                        <th>Stock</th>
+                        <th>Last Ordered</th>
+                        <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {
+                            inventory.map((item, index) => (
+                                <tr key={index}>
+                                    <td>
+                                        <div className={styles.medicineInfo}>
+                                            <div className={styles.medicineIcon}>
+                                                <FontAwesomeIcon icon={item.icon} />
+                                            </div>
+                                            <div>
+                                                <div className={styles.medicineName}>{item.name}</div>
+                                                <div className={styles.medicineCategory}>{item.category}</div>
+                                            </div>
                                         </div>
-                                        <div>
-                                            <div className={styles.medicineName}>{item.name}</div>
-                                            <div className={styles.medicineCategory}>{item.category}</div>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td>{item.category}</td>
-                                <td className={`${styles.stockLevel} ${styles[item.stockLevel]}`}>{item.units}</td>
-                                <td>{item.lastOrdered}</td>
-                                <td>
-                                <button className={`${styles.actionBtn} ${styles.restock}`}>
-                                    <FontAwesomeIcon icon={faPlus} /> Restock
-                                </button>
-                                </td>
-                            </tr>
-                        ))
-                    }
-                </tbody>
-            </table>
+                                    </td>
+                                    <td>{item.category}</td>
+                                    <td className={`${styles.stockLevel} ${styles[item.stockLevel]}`}>{item.units}</td>
+                                    <td>{item.lastOrdered}</td>
+                                    <td>
+                                    <button className={`${styles.actionBtn} ${styles.restock}`}>
+                                        <FontAwesomeIcon icon={faPlus} /> Restock
+                                    </button>
+                                    </td>
+                                </tr>
+                            ))
+                        }
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
   )

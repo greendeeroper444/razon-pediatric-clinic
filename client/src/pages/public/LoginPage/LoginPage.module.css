@@ -401,16 +401,19 @@ body {
   
 
 @media (max-width: 768px) {
+    .hero {
+        padding: 0px !important;
+    }
     .loginContainer {
-        padding: 2rem;
-        width: 90%;
+        padding: 1rem;
+        width: 100%;
     }
 }
   
 @media (max-width: 480px) {
-    .loginContainer {
+    /* .loginContainer {
        padding: 1.5rem;
-    }
+    } */
     
     .formOptions {
         flex-direction: column;

@@ -4,7 +4,12 @@ import NotificationComponent from '../NotificationComponent/NotificationComponen
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSearch, faBell, faChevronDown } from '@fortawesome/free-solid-svg-icons'
 
-const NavbarComponent = () => {
+interface NavbarProps {
+  sidebarCollapsed: boolean;
+  toggleSidebar: () => void;
+}
+
+const NavbarComponent: React.FC<NavbarProps> = ({sidebarCollapsed, toggleSidebar}) => {
     const [showNotifications, setShowNotifications] = useState(false);
 
     const toggleNotifications = () => {
@@ -29,9 +34,15 @@ const NavbarComponent = () => {
   return (
     <div className={styles.navbar}>
         <div className={styles.navbarLeft}>
+            <button 
+                className={styles.toggleButton} 
+                onClick={toggleSidebar}
+                aria-label={sidebarCollapsed ? 'Expand sidebar' : 'Collapse sidebar'}
+            >
+            </button>
             <div className={styles.searchBar}>
                 <FontAwesomeIcon icon={faSearch} />
-                <input type="text" placeholder="Search patients, medicines..." />
+                <input type="text" placeholder='Search patients, medicines...' />
             </div>
         </div>
         <div className={styles.navbarRight}>

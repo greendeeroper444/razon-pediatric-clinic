@@ -1,6 +1,4 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
-@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css');
-
 
 :root {
   --primary: #3b82f6;
@@ -19,6 +17,7 @@
   --archive: #64748b;
   --archive-light: #f1f5f9;
   --sidebar-width: 280px;
+  --sidebar-collapsed-width: 70px;
   --navbar-height: 70px;
   --border-radius: 12px;
   --card-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
@@ -29,6 +28,12 @@
   font-family: 'Poppins', sans-serif;
   font-size: 1rem;
   margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #f9fafb;
 }
 
 .app-container {
@@ -38,50 +43,82 @@
   overflow: hidden;
 }
 
-.sidebar {
-  width: 280px;
-  height: 100%;
-  background-color: #f5f7fa;
-  border-right: 1px solid #e0e5eb;
-  overflow-y: auto;
-}
-
 .main-content {
   flex: 1;
   display: flex;
   flex-direction: column;
   overflow: hidden;
+  margin-left: var(--sidebar-width);
+  transition: var(--transition);
+  width: calc(100% - var(--sidebar-width));
+}
+
+.sidebar-collapsed .main-content {
+  margin-left: var(--sidebar-collapsed-width);
+  width: calc(100% - var(--sidebar-collapsed-width));
 }
 
 .navbar {
-  height: 64px;
+  height: var(--navbar-height);
   padding: 0 20px;
   background-color: #ffffff;
   border-bottom: 1px solid #e0e5eb;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  position: sticky;
+  top: 0;
+  z-index: 50;
 }
 
 .content-area {
   flex: 1;
-  padding: 0;
+  padding: 20px;
   overflow-y: auto;
   background-color: #f9fafb;
 }
 
 
 
+@media (max-width: 1024px) {
+  :root {
+    --sidebar-width: 240px;
+  }
+}
+
 @media (max-width: 768px) {
-  .sidebar {
-    display: none;
-  }
-
-  .sidebar.active {
-    left: 0;
-  }
-
-  .main {
+  .main-content {
     margin-left: 0;
+    width: 100%;
   }
+  
+  .sidebar-collapsed .main-content {
+    margin-left: 0;
+    width: 100%;
+  }
+  
+  .content-area {
+    padding: 15px;
+  }
+}
+
+/*utility classes */
+.d-flex {
+  display: flex;
+}
+
+.align-items-center {
+  align-items: center;
+}
+
+.justify-content-between {
+  justify-content: space-between;
+}
+
+.w-100 {
+  width: 100%;
+}
+
+.h-100 {
+  height: 100%;
 }
