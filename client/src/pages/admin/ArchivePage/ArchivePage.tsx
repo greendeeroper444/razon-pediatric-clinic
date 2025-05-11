@@ -1,7 +1,7 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 import styles from './ArchivePage.module.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faSearch, faFilter, faUser, faCalendarAlt, faArchive, faClock } from '@fortawesome/free-solid-svg-icons'
+import { faSearch, faFilter, faUser, faCalendarAlt, faClock } from '@fortawesome/free-solid-svg-icons'
 
 const ArchivePage = () => {
     const [searchQuery, setSearchQuery] = useState('')

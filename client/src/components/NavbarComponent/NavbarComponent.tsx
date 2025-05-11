@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import { useState, useEffect } from 'react'
 import styles from './NavbarComponent.module.css'
 import NotificationComponent from '../NotificationComponent/NotificationComponent';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -12,8 +12,9 @@ const NavbarComponent = () => {
     };
 
     //close notifications when clicking outside
-    const handleClickOutside = (e) => {
-        if (!e.target.closest(`.${styles.notificationIcon}`) && showNotifications) {
+    const handleClickOutside = (e: MouseEvent) => {
+        const target = e.target as Element;
+        if (!target.closest(`.${styles.notificationIcon}`) && showNotifications) {
             setShowNotifications(false);
         }
     };

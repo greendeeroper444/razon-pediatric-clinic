@@ -1,4 +1,3 @@
-import React from 'react'
 import styles from './HomePage.module.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCalendarCheck, faUserMd, faShieldAlt } from '@fortawesome/free-solid-svg-icons';

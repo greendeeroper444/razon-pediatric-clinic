@@ -1,4 +1,3 @@
-import React from 'react'
 import styles from './SidebarComponent.module.css'
 import { Link, useLocation } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -14,7 +13,7 @@ import {
 
 const SidebarComponent = () => {
     const location = useLocation();
-    const isActive = (path) => location.pathname === path;
+    const isActive = (path: string): boolean => location.pathname === path;
 
   return (
     <div className={styles.sidebar}>

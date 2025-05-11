@@ -1,7 +1,6 @@
-import React from 'react'
 import styles from './ContactPage.module.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faPhone, faEnvelope, faLocationDot, faClock } from '@fortawesome/free-solid-svg-icons'
+import { faPhone, faEnvelope, faLocationDot } from '@fortawesome/free-solid-svg-icons'
 import { faFacebookF, faInstagram, faTwitter } from '@fortawesome/free-brands-svg-icons'
 import FooterComponent from '../../../components/FooterComponent/FooterComponent'
 

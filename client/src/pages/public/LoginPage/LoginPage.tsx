@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import { FormEvent, useState } from 'react'
 import styles from './LoginPage.module.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { 
@@ -11,6 +11,7 @@ import {
     faEyeSlash 
 } from '@fortawesome/free-solid-svg-icons';
 import { Link, useNavigate } from 'react-router-dom';
+import FooterComponent from '../../../components/FooterComponent/FooterComponent';
 
 const LoginPage = () => {
     const navigate = useNavigate();
@@ -19,7 +20,7 @@ const LoginPage = () => {
     const [password, setPassword] = useState('');
     const [rememberMe, setRememberMe] = useState(false);
 
-    const handleSubmit = (e) => {
+    const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         console.log('Login attempt with:', { emailOrContactNumber, password, rememberMe });
     };
@@ -66,9 +67,11 @@ const LoginPage = () => {
                             type='button' 
                             className={styles.passwordToggle}
                             onClick={togglePasswordVisibility}
+                            title={showPassword ? 'Hide password' : 'Show password'}
                         >
-                        <FontAwesomeIcon icon={showPassword ? faEyeSlash : faEye} />
+                            <FontAwesomeIcon icon={showPassword ? faEyeSlash : faEye} />
                         </button>
+
                     </div>
                 </div>
                 
@@ -131,7 +134,7 @@ const LoginPage = () => {
             </div>
         </section>
 
-        <footer className={styles.footer}>&copy; 2025 MediCare Clinic. All rights reserved.</footer>
+        <FooterComponent />
     </div>
   )
 }

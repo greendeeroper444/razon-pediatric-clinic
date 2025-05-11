@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import { FormEvent, useState } from 'react'
 import styles from './SignupPage.module.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { 
@@ -20,7 +20,7 @@ const SignupPage = () => {
     const [password, setPassword] = useState('');
     const [rememberMe, setRememberMe] = useState(false);
 
-    const handleSubmit = (e) => {
+    const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         console.log('Login attempt with:', { name, emailOrContactNumber, password, rememberMe });
     };
@@ -81,6 +81,7 @@ const SignupPage = () => {
                             type='button' 
                             className={styles.passwordToggle}
                             onClick={togglePasswordVisibility}
+                            title={showPassword ? 'Hide password' : 'Show password'}
                         >
                         <FontAwesomeIcon icon={showPassword ? faEyeSlash : faEye} />
                         </button>

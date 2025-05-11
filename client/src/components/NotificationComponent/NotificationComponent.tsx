@@ -1,9 +1,13 @@
-import React from 'react'
 import styles from './NotificationComponent.module.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCalendar, faPrescriptionBottleAlt, faFolder, faCheckDouble } from '@fortawesome/free-solid-svg-icons'
 
-const NotificationComponent = ({isVisible}) => {
+interface NotificationComponentProps {
+    isVisible: boolean;
+}
+
+// const NotificationComponent = ({isVisible}: NotificationComponentProps) => {
+const NotificationComponent: React.FC<NotificationComponentProps> = ({isVisible}) => {
    
     const notifications = [
         {

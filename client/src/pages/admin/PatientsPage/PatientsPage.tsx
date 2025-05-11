@@ -63,7 +63,7 @@ const PatientsPage: React.FC<OpenModalProps> = ({openModal}) => {
         setShowPatientDetail(!showPatientDetail);
     };
 
-    const handleTabChange = (tab) => {
+    const handleTabChange = (tab: string) => {
         setActiveTab(tab);
     };
 

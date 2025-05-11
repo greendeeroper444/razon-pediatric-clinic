@@ -548,7 +548,7 @@ const ModalComponent: React.FC<ModalComponentProps> = ({
     if (!isOpen) return null;
 
     let title = '';
-    let formContent: JSX.Element | null = null;
+    let formContent: React.ReactElement | null = null;
 
     //render different form content based on modalType
     switch (modalType) {

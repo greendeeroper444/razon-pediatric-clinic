@@ -1,4 +1,3 @@
-import React from 'react'
 import styles from './FooterComponent.module.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {

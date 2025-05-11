@@ -1,7 +1,5 @@
-import React from 'react'
 import styles from './AboutPage.module.css'
 import { Link } from 'react-router-dom'
-import NavigationComponent from '../../components/NavigationComponent/NavigationComponent'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { 
     faHeart, 
