@@ -22,10 +22,40 @@ import styles from './pages/public/HomePage/HomePage.module.css'
 import ModalComponent from './components/ModalComponent/ModalComponent'
 import { ModalContext, useModal, OpenModalProps } from './hooks/hook'
 
-//define form data type
-interface FormData {
-  [key: string]: unknown;
+//define modal types to match what ModalComponent is expecting
+type ModalType = 'appointment' | 'patient' | 'item';
+
+//define appropriate interfaces for each form data type
+interface AppointmentFormData {
+  patient?: string;
+  doctor?: string;
+  date?: string;
+  time?: string;
+  appointmentType?: string;
+  notes?: string;
 }
+
+interface PatientFormData {
+  name?: string;
+  gender?: string;
+  age?: string;
+  primaryDoctor?: string;
+  height?: string;
+  weight?: string;
+  allergies?: string;
+  medications?: string[];
+}
+
+interface InventoryItemFormData {
+  medicine?: string;
+  category?: string;
+  minLevel?: string;
+  expirationDate?: string;
+  location?: string;
+}
+
+//union type for all possible form data
+type FormDataType = AppointmentFormData | PatientFormData | InventoryItemFormData;
 
 //define the route type
 interface RouteType {
@@ -60,17 +90,20 @@ const routes: RouteType[] = [
 
 function App() {
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
-  const [modalType, setModalType] = useState<string>('');
+  //fix: Change the state type from string to ModalType
+  const [modalType, setModalType] = useState<ModalType>('appointment');
 
   //modal functions
-  const openModal = (type: string): void => {
+  //fix: Change the input type from string to ModalType
+  const openModal = (type: ModalType): void => {
     setModalType(type);
     setIsModalOpen(true);
   }
 
   const closeModal = (): void => setIsModalOpen(false);
 
-  const handleSubmit = (formData: FormData): void => {
+  //fix: Change the input type from FormData to FormDataType
+  const handleSubmit = (formData: FormDataType): void => {
     console.log('Form submitted:', formData);
     console.log('Form type:', modalType);
     
