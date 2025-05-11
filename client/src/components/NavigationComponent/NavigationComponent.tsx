@@ -14,7 +14,7 @@ const NavigationComponent = () => {
         setIsMenuOpen(!isMenuOpen);
     };
 
-    const isActive = (path) => {
+    const isActive = (path: string): boolean => {
         return location.pathname === path;
     };
 
