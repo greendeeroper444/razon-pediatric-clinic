@@ -12,8 +12,7 @@ import {
     faCapsules, 
     faPrescriptionBottle, 
     faPrescriptionBottleAlt, 
-    faEdit, 
-    faTrash
+    faEdit
 } from '@fortawesome/free-solid-svg-icons';
 import { OpenModalProps } from '../../../hooks/hook';
 
