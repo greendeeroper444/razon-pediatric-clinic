@@ -13,7 +13,8 @@ import {
   AboutPage,
   ServicesPage,
   ContactPage,
-  UserAppointmentPage
+  UserAppointmentPage,
+  ForgotPasswordPage,
 } from './pages'
 import NavigationComponent from './components/NavigationComponent/NavigationComponent'
 import SidebarComponent from './components/SidebarComponent/SidebarComponent'
@@ -77,6 +78,7 @@ const routes: RouteType[] = [
   { path: '/', component: HomePage, layout: 'user' },
   { path: '/login', component: LoginPage, layout: 'user' },
   { path: '/signup', component: SignupPage, layout: 'user' },
+  { path: '/forgot-password', component: ForgotPasswordPage, layout: 'user' },
   { path: '/about', component: AboutPage, layout: 'user' },
   { path: '/services', component: ServicesPage, layout: 'user' },
   { path: '/contact', component: ContactPage, layout: 'user' },

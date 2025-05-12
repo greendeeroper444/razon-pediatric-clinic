@@ -21,7 +21,7 @@ const FooterComponent = () => {
                 </div>
                 <div className={styles.footerCol}>
                     <h3>Contact</h3>
-                    <p>Phone: (555) 123-4567<br/>Email: info@razonpediatrics.com</p>
+                    <p>Phone: 0997-455-9639<br/>Email: razonpediatrics@gmail.com</p>
                 </div>
                 <div className={styles.footerCol}>
                     <h3>Follow Us</h3>

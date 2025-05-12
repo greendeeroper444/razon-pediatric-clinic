@@ -79,7 +79,7 @@ body {
 
 .content-area {
   flex: 1;
-  padding: 20px;
+  /* padding: 20px; */
   overflow-y: auto;
   background-color: #f9fafb;
 }

@@ -54,6 +54,17 @@
 .btnOutline:hover {
     background-color: rgba(79, 70, 229, 0.1);
 }
+.cancel {
+    background-color: #fee2e2;
+    color: var(--danger);
+    margin-left: 8px;
+}
+.cancel:hover {
+    background-color: #fecaca;
+}
+  
+
+
   
 .sectionTitle {
     margin: 25px 0 15px;

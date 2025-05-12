@@ -14,7 +14,8 @@ import {
     faPhone,
     faMapMarkerAlt,
     faEdit,
-    faCalendarPlus
+    faCalendarPlus,
+    faArchive
 } from '@fortawesome/free-solid-svg-icons';
 import { OpenModalProps } from '../../../hooks/hook';
 
@@ -40,19 +41,19 @@ const PatientsPage: React.FC<OpenModalProps> = ({openModal}) => {
 
     const PATIENT_INFO = {
             id: 'PT-1001',
-            name: 'John Doe',
+            name: 'Greendee Roper B. Panogalon',
             initials: 'JD',
             gender: 'Male',
-            birthDate: 'Mar 15, 1981',
+            birthDate: 'Mar 15, 2003',
             age: 42,
-            phone: '(555) 123-4567',
-            address: '123 Main St, Anytown, CA 90210',
+            phone: '0997-455-96539',
+            address: 'Mabuhay, Carmen, Davao del Norte',
             bloodType: 'A+',
             heightWeight: '5\'10" / 180 lbs',
             allergies: 'Penicillin, Peanuts',
-            doctor: 'Dr. Smith',
+            doctor: 'Dr. Razon',
             lastVisit: 'Jun 2, 2023',
-            nextAppointment: 'Jul 15, 2023',
+            nextAppointment: 'Jul 15, 2025',
             medications: [
             { name: 'Lisinopril', dosage: '10mg daily (Hypertension)' },
             { name: 'Atorvastatin', dosage: '20mg nightly (Cholesterol)' }
@@ -149,6 +150,9 @@ const PatientsPage: React.FC<OpenModalProps> = ({openModal}) => {
                                                 <button className={`${styles.actionBtn} ${styles.primary}`} onClick={togglePatientDetail}>
                                                     <FontAwesomeIcon icon={faEye} /> View
                                                 </button>
+                                                <button className={`${styles.actionBtn} ${styles.cancel}`} onClick={togglePatientDetail}>
+                                                    <FontAwesomeIcon icon={faArchive} /> Archive
+                                                </button>
                                             </td>
                                         </tr>
                                     ))
@@ -195,7 +199,11 @@ const PatientsPage: React.FC<OpenModalProps> = ({openModal}) => {
                             <button className={styles.btnOutline}>
                                 <FontAwesomeIcon icon={faEdit} /> Edit
                             </button>
-                            <button className={styles.btnPrimary}>
+                            <button 
+                            className={styles.btnPrimary} 
+                                id="newAppointmentBtn" 
+                                onClick={() => openModal && openModal('appointment')}
+                            >
                                 <FontAwesomeIcon icon={faCalendarPlus} /> New Appointment
                             </button>
                         </div>

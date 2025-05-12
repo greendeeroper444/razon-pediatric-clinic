@@ -1,7 +1,7 @@
-.contactContent {
+.content {
     display: flex;
     flex-direction: row;
-    padding: 60px 5%;
+    padding: 20px;
     gap: 40px;
     background-color: var(--light);
     min-height: calc(100vh - var(--navbar-height));
@@ -214,7 +214,7 @@
 }
 
 @media (max-width: 992px) {
-    .contactContent {
+    .content {
         flex-direction: column;
     }
 }

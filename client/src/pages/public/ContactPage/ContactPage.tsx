@@ -7,7 +7,7 @@ import FooterComponent from '../../../components/FooterComponent/FooterComponent
 const ContactPage = () => {
   return (
     <div>
-        <div className={styles.contactContent}>
+        <div className={styles.content}>
             <div className={styles.contactForm}>
                 <h2>Get in Touch</h2>
                 <form>
@@ -47,19 +47,19 @@ const ContactPage = () => {
                     <div className={styles.infoItem}>
                         <FontAwesomeIcon icon={faPhone} className={styles.infoIcon} />
                         <div className={styles.infoText}>
-                            +63 912 345 6789
+                            +63 997 455 9639
                         </div>
                     </div>
                     <div className={styles.infoItem}>
                         <FontAwesomeIcon icon={faEnvelope} className={styles.infoIcon} />
                         <div className={styles.infoText}>
-                            info@razonpediatric.com
+                            razonpediatric@gmail.com
                         </div>
                     </div>
                     <div className={styles.infoItem}>
                         <FontAwesomeIcon icon={faLocationDot} className={styles.infoIcon} />
                         <div className={styles.infoText}>
-                            Service Rd, Panabo, Davao del Norte
+                            4J38+73R, Gladiola St, Buhangin, Davao City, 8000 Davao del Sur
                         </div>
                     </div>
                     

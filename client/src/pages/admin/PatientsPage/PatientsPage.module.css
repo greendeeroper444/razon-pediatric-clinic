@@ -458,94 +458,160 @@
 
 
 .patientDetailContainer {
-    background: white;
-    border-radius: var(--border-radius);
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-    padding: 20px;
-    margin-bottom: 30px;
+  background: white;
+  border-radius: var(--border-radius);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  padding: 24px;
+  margin-bottom: 30px;
+  transition: all 0.3s ease;
 }
-  
+
 .patientHeader {
-    display: flex;
-    align-items: center;
-    gap: 20px;
-    margin-bottom: 20px;
-    padding-bottom: 20px;
-    border-bottom: 1px solid var(--gray-light);
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  margin-bottom: 24px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid var(--gray-light);
+  flex-wrap: wrap;
 }
-  
+
 .patientAvatarLg {
-    width: 80px;
-    height: 80px;
-    border-radius: 50%;
-    background-color: var(--primary-light);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: var(--primary);
-    font-size: 1.5rem;
-    font-weight: 600;
-    flex-shrink: 0;
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background-color: var(--primary-light);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--primary);
+  font-size: 1.5rem;
+  font-weight: 600;
+  flex-shrink: 0;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease;
 }
-  
+
+.patientAvatarLg:hover {
+  transform: scale(1.05);
+}
+
 .patientHeaderInfo {
-    flex: 1;
+  flex: 1;
+  min-width: 200px;
 }
-  
+
 .patientNameLg {
-    font-size: 1.5rem;
-    font-weight: 600;
-    margin-bottom: 5px;
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: var(--dark);
 }
-  
+
 .patientMeta {
-    display: flex;
-    gap: 15px;
-    margin-bottom: 10px;
+  display: flex;
+  gap: 15px;
+  margin-bottom: 10px;
+  flex-wrap: wrap;
 }
-  
+
 .patientMetaItem {
-    display: flex;
-    align-items: center;
-    gap: 5px;
-    font-size: 0.9rem;
-    color: var(--dark-light);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.9rem;
+  color: var(--dark-light);
+  margin-bottom: 5px;
 }
-  
+
+.patientMetaItem svg {
+  color: var(--primary);
+}
+
 .patientActions {
-    display: flex;
-    gap: 10px;
+  display: flex;
+  gap: 10px;
+  margin-left: auto;
+  flex-wrap: wrap;
 }
-  
+
+.btnOutline, .btnPrimary {
+  padding: 8px 16px;
+  border-radius: var(--border-radius);
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+
+.btnOutline {
+  border: 1px solid var(--primary);
+  color: var(--primary);
+  background: transparent;
+}
+
+.btnOutline:hover {
+  background: var(--primary-light);
+}
+
+.btnPrimary {
+  background: var(--primary);
+  color: white;
+  border: none;
+}
+
+.btnPrimary:hover {
+  background: var(--primary-dark);
+  transform: translateY(-1px);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
 .patientTabs {
-    display: flex;
-    border-bottom: 1px solid var(--gray-light);
-    margin-bottom: 20px;
+  display: flex;
+  border-bottom: 1px solid var(--gray-light);
+  margin-bottom: 24px;
+  overflow-x: auto;
+  scrollbar-width: thin;
+  -webkit-overflow-scrolling: touch;
 }
-  
+
+.patientTabs::-webkit-scrollbar {
+  height: 4px;
+}
+
+.patientTabs::-webkit-scrollbar-thumb {
+  background-color: var(--gray-light);
+  border-radius: 4px;
+}
+
 .patientTab {
-    padding: 10px 20px;
-    font-weight: 500;
-    cursor: pointer;
-    border-bottom: 2px solid transparent;
-    transition: var(--transition);
+  padding: 10px 20px;
+  font-weight: 500;
+  cursor: pointer;
+  border-bottom: 2px solid transparent;
+  transition: all 0.2s ease;
+  white-space: nowrap;
 }
-  
+
 .patientTab.active {
-    color: var(--primary);
-    border-bottom-color: var(--primary);
+  color: var(--primary);
+  border-bottom-color: var(--primary);
 }
-  
+
 .patientTab:not(.active):hover {
-    color: var(--primary);
+  color: var(--primary);
+  border-bottom-color: var(--primary-light);
 }
-  
+
 .patientTabContent {
-    display: none;
+  display: none;
+  animation: fadeIn 0.3s ease;
 }
-  
+
 .patientTabContent.active {
-    display: block;
+  display: block;
 }
   
 .infoGrid {
@@ -573,14 +639,95 @@
   
 
 
-
+@media (max-width: 992px) {
+    .infoGrid {
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    }
+}
 
 @media (max-width: 768px) {
-    .content {
-        padding: 10px;
+        .content {
+            padding: 10px;
+        }
+        .contentHeader {
+            flex-direction: column;
+            align-items: flex-start;
+        }
+    .patientDetailContainer {
+        padding: 16px;
     }
-    .contentHeader {
+    
+    .patientHeader {
         flex-direction: column;
         align-items: flex-start;
+        gap: 16px;
+    }
+    
+    .patientHeaderInfo {
+        width: 100%;
+    }
+    
+    .patientActions {
+        margin-left: 0;
+        width: 100%;
+        justify-content: space-between;
+    }
+    
+    .btnOutline, .btnPrimary {
+        flex: 1;
+        justify-content: center;
+    }
+    
+    .patientMeta {
+        gap: 12px;
+    }
+    
+    .infoGrid {
+        grid-template-columns: repeat(auto-fill, minmax(100%, 1fr));
+    }
+}
+
+@media (max-width: 576px) {
+    .patientDetailContainer {
+        padding: 12px;
+        margin-bottom: 20px;
+    }
+    
+    .patientAvatarLg {
+        width: 60px;
+        height: 60px;
+        font-size: 1.2rem;
+    }
+    
+    .patientNameLg {
+        font-size: 1.3rem;
+    }
+    
+    .patientTab {
+        padding: 8px 12px;
+        font-size: 0.9rem;
+    }
+    
+    .patientActions {
+        flex-direction: column;
+        gap: 8px;
+    }
+    
+    .btnOutline, .btnPrimary {
+        width: 100%;
+        padding: 10px;
+    }
+    
+    .patientMetaItem {
+        font-size: 0.85rem;
+    }
+    
+    .infoCard {
+        padding: 12px;
+    }
+    
+    .sectionTitle {
+        font-size: 1.1rem;
+        margin: 20px 0 12px;
     }
 }

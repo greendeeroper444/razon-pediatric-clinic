@@ -12,7 +12,8 @@ import {
     faCapsules, 
     faPrescriptionBottle, 
     faPrescriptionBottleAlt, 
-    faEdit 
+    faEdit, 
+    faTrash
 } from '@fortawesome/free-solid-svg-icons';
 import { OpenModalProps } from '../../../hooks/hook';
 
@@ -205,33 +206,36 @@ const InventoryPage: React.FC<OpenModalProps> = ({openModal}) => {
                         {
                             inventoryItems.map((item, index) => (
                                 <tr key={index}>
-                                <td>
-                                    <div className={styles.medicineInfo}>
-                                    <div className={styles.medicineIcon}>
-                                        <FontAwesomeIcon icon={item.icon} />
-                                    </div>
-                                    <div>
-                                        <div className={styles.medicineName}>{item.name}</div>
-                                        <div className={styles.medicineCategory}>{item.description}</div>
-                                    </div>
-                                    </div>
-                                </td>
-                                <td>{item.category}</td>
-                                <td className={`${styles.stockLevel} ${styles[item.stock.level]}`}>
-                                    {item.stock.amount}
-                                </td>
-                                <td>{item.minLevel}</td>
-                                <td>
-                                    <span className={`${styles.expiryStatus} ${styles[item.expiry.status]}`}>
-                                        {item.expiry.date}
-                                    </span>
-                                </td>
-                                <td>{item.location}</td>
-                                <td>
-                                    <button className={`${styles.actionBtn} ${styles.primary}`}>
-                                        <FontAwesomeIcon icon={faEdit} /> Edit
-                                    </button>
-                                </td>
+                                    <td>
+                                        <div className={styles.medicineInfo}>
+                                        <div className={styles.medicineIcon}>
+                                            <FontAwesomeIcon icon={item.icon} />
+                                        </div>
+                                        <div>
+                                            <div className={styles.medicineName}>{item.name}</div>
+                                            <div className={styles.medicineCategory}>{item.description}</div>
+                                        </div>
+                                        </div>
+                                    </td>
+                                    <td>{item.category}</td>
+                                    <td className={`${styles.stockLevel} ${styles[item.stock.level]}`}>
+                                        {item.stock.amount}
+                                    </td>
+                                    <td>{item.minLevel}</td>
+                                    <td>
+                                        <span className={`${styles.expiryStatus} ${styles[item.expiry.status]}`}>
+                                            {item.expiry.date}
+                                        </span>
+                                    </td>
+                                    <td>{item.location}</td>
+                                    <td>
+                                        <button className={`${styles.actionBtn} ${styles.primary}`}>
+                                            <FontAwesomeIcon icon={faEdit} /> Edit
+                                        </button>
+                                        {/* <button className={`${styles.actionBtn} ${styles.cancel}`}>
+                                            <FontAwesomeIcon icon={faTrash} /> Delete
+                                        </button> */}
+                                    </td>
                                 </tr>
                             ))
                         }

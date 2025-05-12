@@ -2,6 +2,7 @@
 //public pages
 export { default as HomePage } from './public/HomePage/HomePage';
 export { default as LoginPage } from './public/LoginPage/LoginPage';
+export { default as ForgotPasswordPage } from './public/ForgotPasswordPage/ForgotPasswordPage';
 export { default as SignupPage } from './public/SignupPage/SignupPage';
 export { default as AboutPage } from './public/AboutPage/AboutPage';
 export { default as ServicesPage } from './public/ServicesPage/ServicesPage';
